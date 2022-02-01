@@ -5,8 +5,8 @@ const Login = () => {
   return (
     <ComponentContainer>
       <ModalContainer>
-        <h1>Welcome to Anywhere Fitness 💪</h1>
-        <h2>Please Enter Your Information </h2>
+        {/* <h1>Welcome to Anywhere Fitness 💪</h1> */}
+        <h2>Log In </h2>
 
         <FormGroup className="log-in">
           <Input name="username" placeholder="Enter Username" type="text" />
@@ -32,7 +32,7 @@ const ComponentContainer = styled.div`
 
 const ModalContainer = styled.div`
   width: 500px;
-  background: white;
+  background: #ffdb58;
   padding: 2rem;
   text-align: center;
 `;
@@ -42,14 +42,19 @@ const FormGroup = styled.form`
 `;
 
 const Input = styled.input`
+  border: none;
+  border-bottom: solid black 3px;
   border-radius: 5px;
+  background-color: #b1cffa;
   font-size: 1rem;
   padding: 1rem 0;
   width: 100%;
 `;
 
 const Button = styled.button`
+  background-color: #7d98ec;
   border-radius: 5px;
+
   padding: 1rem;
   width: 100%;
 `;

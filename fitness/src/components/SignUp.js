@@ -8,10 +8,11 @@ const Signup = () => {
         <h1>Sign Up for our Classes 💪</h1>
         <h2>Select </h2>
         <FormGroup className="sign-up">
-          <label>Client</label>
-          <Input type="radio" />
-          <label>Instructor</label>
-          <Input type="radio" />
+          <label>Role: </label>
+          <select>
+            <option value={"client"}>Client</option>
+            <option value={"instructor"}>Instructor</option>
+          </select>
 
           <Input name="email" placeholder="Enter email" type="email" />
           <br />

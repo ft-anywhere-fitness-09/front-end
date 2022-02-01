@@ -52,9 +52,12 @@ const MenuStyle = styled.ul`
     padding: 0.3rem 1rem;
 
     a {
-      text-decoration: none;
+      text-decoration: wavy;
       color: black;
-      font-size: 1em;
+      font-size: 1.2em;
+    }
+    a:hover {
+      color: #6298e4;
     }
   }
 `;
