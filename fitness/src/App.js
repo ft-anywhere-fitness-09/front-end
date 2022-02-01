@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Login from "../src/components/Login";
+import Logout from "./components/Logout";
 import Signup from "../src/components/SignUp";
 import ClassForm from "../src/components/ClassForm";
 import Header from "../src/components/Header";
