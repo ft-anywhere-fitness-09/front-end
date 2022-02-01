@@ -8,6 +8,9 @@ const Header = () => {
       <p>Anywhere Fitness 🏋️‍♀️</p>
       <MenuStyle>
         <li>
+          <Link to="/home">Home</Link>
+        </li>
+        <li>
           <Link to="/login">Login</Link>
         </li>
 
