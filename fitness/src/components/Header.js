@@ -54,10 +54,11 @@ const MenuStyle = styled.ul`
     a {
       text-decoration: wavy;
       color: black;
+      font-weight: bold;
       font-size: 1.2em;
     }
     a:hover {
-      color: #6298e4;
+      color: #fa8c80;
     }
   }
 `;

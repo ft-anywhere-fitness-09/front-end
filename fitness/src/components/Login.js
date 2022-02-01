@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const Login = () => {
+  const handleChange = (e) => {};
+  const handleSubmit = (e) => {};
+
   return (
     <ComponentContainer>
       <ModalContainer>
         {/* <h1>Welcome to Anywhere Fitness 💪</h1> */}
         <h2>Log In </h2>
 
-        <FormGroup className="log-in">
+        <FormGroup onSubmit={handleSubmit} className="log-in">
           <Input name="username" placeholder="Enter Username" type="text" />
           <br />
           <br />

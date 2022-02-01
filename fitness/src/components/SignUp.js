@@ -2,19 +2,27 @@ import React from "react";
 import styled from "styled-components";
 
 const Signup = () => {
+  const handleSubmit = () => {};
+  const handleChange = () => {};
   return (
     <ComponentContainer>
       <ModalContainer>
         <h1>Sign Up for our Classes 💪</h1>
-        <h2>Select </h2>
-        <FormGroup className="sign-up">
-          <label>Role: </label>
-          <select>
-            <option value={"client"}>Client</option>
-            <option value={"instructor"}>Instructor</option>
-          </select>
-
-          <Input name="email" placeholder="Enter email" type="email" />
+        <h2 style={{ fontWeight: "initial" }}>Fill Out The Information </h2>
+        <FormGroup onSubmit={handleSubmit} className="sign-up">
+          <div style={{ marginBottom: "5%" }}>
+            <label style={{ fontWeight: "bold" }}>Role: </label>
+            <select style={{ padding: "0.1em", backgroundColor: "#b1cffa" }}>
+              <option value={"client"}>Client</option>
+              <option value={"instructor"}>Instructor</option>
+            </select>
+          </div>
+          <Input
+            name="email"
+            placeholder="Enter email"
+            type="email"
+            onChange={handleChange}
+          />
           <br />
           <br />
           <Input name="Name" placeholder="Enter Name" type="text" />
@@ -64,7 +72,7 @@ const Input = styled.input`
   font-size: 1rem;
   padding: 1rem 0;
   width: 100%;
-  background-color: #b1cffa;
+  background-color: #a9cbfa;
 `;
 
 const Button = styled.button`
