@@ -3,8 +3,10 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Login from "../src/components/Login";
+import Signup from "../src/components/SignUp";
 import ClassForm from "../src/components/ClassForm";
 import Header from "../src/components/Header";
+import HomePage from "../src/components/HomePage";
 
 function App() {
   return (
@@ -14,11 +16,16 @@ function App() {
         <Route exact path="/class">
           <ClassForm />
         </Route>
-        <Route exact path="/signup"></Route>
+        <Route exact path="/signup">
+          <Signup />
+        </Route>
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/"><Login /></Route>
+        <Route exact path="/">
+          <HomePage />
+          <Signup />
+        </Route>
       </Switch>
     </div>
   );

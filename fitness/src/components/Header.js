@@ -5,14 +5,14 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <HeaderStyle>
-      <p>Fitness</p>
+      <p>Anywhere Fitness 🏋️‍♀️</p>
       <MenuStyle>
         <li>
-          <Link to="/">Login</Link>
+          <Link to="/login">Login</Link>
         </li>
 
         <li>
-          <Link to="/sign">Sign Up</Link>
+          <Link to="/signup">Sign Up</Link>
         </li>
         <li>
           <Link to="/class">Classes</Link>
@@ -29,7 +29,7 @@ export default Header;
 
 const HeaderStyle = styled.div`
   padding: 1em;
-  background-color: #daa1ac;
+  background-color: #ffdb58;
   display: flex;
   align-items: center;
   justify-content: space-between;
