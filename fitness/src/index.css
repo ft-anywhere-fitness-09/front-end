@@ -15,7 +15,7 @@ code {
 ::placeholder {
   color: black;
   text-align: center;
-  font-size: small;
+  font-size: medium;
 }
 
 .force-opaque::placeholder {
