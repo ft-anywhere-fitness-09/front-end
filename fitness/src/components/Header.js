@@ -18,6 +18,9 @@ const Header = () => {
           <Link to="/class">Classes</Link>
         </li>
         <li>
+          <Link to="/search">Search Classes</Link>
+        </li>
+        <li>
           <Link to="/logout">Logout</Link>
         </li>
       </MenuStyle>

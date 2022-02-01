@@ -6,8 +6,13 @@ const Signup = () => {
     <ComponentContainer>
       <ModalContainer>
         <h1>Sign Up for our Classes 💪</h1>
-        <h2>Please Fill Out The Information </h2>
+        <h2>Select </h2>
         <FormGroup className="sign-up">
+          <label>Client</label>
+          <Input type="radio" />
+          <label>Instructor</label>
+          <Input type="radio" />
+
           <Input name="email" placeholder="Enter email" type="email" />
           <br />
           <br />
@@ -53,11 +58,12 @@ const FormGroup = styled.form`
 
 const Input = styled.input`
   border: none;
-  border-bottom: solid black 2px;
+  border-bottom: solid black 3px;
   border-radius: 5px;
   font-size: 1rem;
   padding: 1rem 0;
   width: 100%;
+  background-color: #b1cffa;
 `;
 
 const Button = styled.button`
