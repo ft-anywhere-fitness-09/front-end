@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const ClassForm = () => {
     const [state, setState] = useState({
@@ -21,10 +22,17 @@ const ClassForm = () => {
     }
 
     return(
-        <div>
-            <h1>Create a New Class</h1>
+        <ComponentContainer>
+            <StyledHeader>Create a New Class</StyledHeader>
+           
                 <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <FormDiv>
+                    <ImageDiv>
+                        <ImgSrc src="https://images.pexels.com/photos/4327024/pexels-photo-4327024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+                    </ImageDiv>
+                   
+                    <div className="form-group">
+                  
                 <label htmlFor="name">Name:</label><br/>
                 <input onChange={handleChange} value={state.name} name="name" id="name" />
             </div>
@@ -83,10 +91,43 @@ const ClassForm = () => {
                 errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
             } */}
             <button>Create Class</button>
+            </FormDiv>
                 </form>
-        </div>
+              
+        </ComponentContainer>
     )
 
 }
+
+const ComponentContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+ 
+`;
+
+const StyledHeader = styled.h1`
+max-width: 100%;
+
+`;
+
+const ImageDiv = styled.div`
+width: 40%
+
+
+`;
+
+const ImgSrc = styled.img`
+height: 50rem;
+border-style: solid;
+`
+const FormDiv = styled.div`
+width: 40%
+
+justify-content: center;
+align-items: center;
+
+`
 
 export default ClassForm;
