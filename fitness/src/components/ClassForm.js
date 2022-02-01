@@ -34,7 +34,15 @@ const ClassForm = () => {
             </div>
             <div className="form-group">
                 <label htmlFor="time">Class Time:</label><br/>
-                <input onChange={handleChange} value={state.time} name="time" id="time" />
+                <select onChange={handleChange} value={state.time} name="time" id="time" >
+                    <option value={"4:00-1:00"}>12:00-1:00</option>
+                    <option value={"12:00-1:00"}>1:00-2:00</option>
+                    <option value={"12:00-1:00"}>2:00-3:00</option>
+                    <option value={"12:00-1:00"}>3:00-1:00</option>
+                    <option value={"12:00-1:00"}>:00-1:00</option>
+                    <option value={"12:00-1:00"}>12:00-1:00</option>
+                    <option value={"12:00-1:00"}>12:00-1:00</option>
+                </select>
             </div>
             <div className="form-group">
                 <label htmlFor="duration">Class Duration:</label><br/>
