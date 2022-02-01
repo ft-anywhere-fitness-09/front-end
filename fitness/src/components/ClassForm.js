@@ -45,8 +45,8 @@ const ClassForm = () => {
                 <input onChange={handleChange} value={state.level} name="level" id="level" />
             </div>
             <div className="form-group">
-                <label htmlFor="duration">Class Duration:</label><br/>
-                <input onChange={handleChange} value={state.duration} name="duration" id="duration" />
+                <label htmlFor="location">Class location:</label><br/>
+                <input onChange={handleChange} value={state.location} name="location" id="location" />
             </div>
             <div className="form-group">
                 <label htmlFor="attend">Number of Attendees:</label><br/>
@@ -65,3 +65,5 @@ const ClassForm = () => {
     )
 
 }
+
+export default ClassForm;
