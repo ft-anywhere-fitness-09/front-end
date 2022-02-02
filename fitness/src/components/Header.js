@@ -7,21 +7,20 @@ const Header = () => {
     <HeaderStyle>
       <p>Anywhere Fitness 🏋️‍♀️</p>
       <MenuStyle>
-        <li>
+      <li>
           <Link to="/home">Home</Link>
         </li>
         <li>
           <Link to="/login">Login</Link>
         </li>
-
         <li>
           <Link to="/signup">Sign Up</Link>
         </li>
         <li>
-          <Link to="/class">Classes</Link>
+          <Link to="/form">Add Class</Link>
         </li>
         <li>
-          <Link to="/search">Search Classes</Link>
+          <Link to="/classes">Search Classes</Link>
         </li>
         <li>
           <Link to="/logout">Logout</Link>
@@ -35,7 +34,7 @@ export default Header;
 
 const HeaderStyle = styled.div`
   padding: 1em;
-  background-color: #ffdb58;
+  background-color: #daa1ac;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,13 +51,9 @@ const MenuStyle = styled.ul`
     padding: 0.3rem 1rem;
 
     a {
-      text-decoration: wavy;
+      text-decoration: none;
       color: black;
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-    a:hover {
-      color: #fa8c80;
+      font-size: 1em;
     }
   }
 `;

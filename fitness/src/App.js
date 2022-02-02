@@ -1,5 +1,5 @@
 // import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Login from "../src/components/Login";
@@ -10,17 +10,31 @@ import Header from "../src/components/Header";
 import HomePage from "../src/components/HomePage";
 import SearchClass from "../src/components/SearchClass";
 import Layout from "../src/components/Layout";
+import EditClassForm from "./components/EditClassForm";
+import Class from "./components/Class";
 
 function App() {
+  const [classes, setClasses] = useState([]);
+
+  const updateClasses = () => {
+
+  }
+
   return (
     <div className="App">
       <Header />
       <Layout>
         <Switch>
-          <Route exact path="/search">
+          <Route path="/classes/edit/:id">
+            <EditClassForm updateClasses={updateClasses} setClasses={setClasses}/>
+          </Route>
+          <Route path="/classes/:id">
+            <Class updateClasses={updateClasses}/>
+          </Route>
+          <Route exact path="/classes" classes={classes}>
             <SearchClass />
           </Route>
-          <Route exact path="/class">
+          <Route exact path="/form" updateClasses={updateClasses} setClasses={setClasses}>
             <ClassForm />
           </Route>
           <Route exact path="/signup">

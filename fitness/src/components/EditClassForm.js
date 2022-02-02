@@ -1,43 +1,56 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import axios from 'axios';
 
-const ClassForm = (props) => {
-    // const { push } = useHistory();
+const EditClassForm = (props) => {
+	// const { push } = useHistory();
+    const { id } = useParams();
 
-    const { updateClasses } = props;
+	const { updateClasses } = props;
 	const [ classes, setClasses] = useState({
-    name: "",
-    type: "",
-    time: "",
-    duration: 0,
-    level: 0,
-    location: "",
-    attend: 0,
-    size: 0,
-  });
+        name: "",
+        type: "",
+        time: "",
+        duration: 0,
+        level: 0,
+        location: "",
+        attend: 0,
+        size: 0,
+	});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // axios.post(`http://localhost:9000/api/classes`, classes)
-    //     .then(resp=>{
-    //         updateClasses(resp.data)
-    //         push(`/classes`);
-    //     })
-    //     .catch(error=>{
-    //         console.log(error);
-    //     })
-  };
+   
+    useEffect(()=>{
+        // axios.get(`http://localhost:9000/api/classes/${id}`)
+        //     .then(res=>{
+        //         setClasses(res.data);
+        //     })
+	}, [id]);
+	
+	const handleChange = (e) => {
+        setClasses({
+            ...classes,
+            [e.target.name]: e.target.value
+        });
+    }
 
-  const handleChange = (e) => {
-    setClasses({
-        ...classes,
-        [e.target.name]: e.target.value
-    });
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // axios.put(`http://localhost:9000/api/classes/${id}`, classes)
+        //     .then(resp=>{
+        //         updateClasses(resp.data);
+        //         push(`/classes/${classes.id}`);
+		// 	})
+		// 	.catch(error=>{
+		// 		console.log(error);
+		// 	})
+	}
+    const { name, type, time, duration, level, location, attend, size } = classes;
 
-  return (
-    <ComponentContainer>
-      <StyledHeader>Create a New Class</StyledHeader>
+    return (
+	    <ComponentContainer>
+      <StyledHeader>Edit {classes.name}</StyledHeader>
 
       <form onSubmit={handleSubmit}>
         <FormDiv>
@@ -47,7 +60,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.name}
+                value={name}
                 name="name"
                 id="name"
               />
@@ -57,7 +70,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.type}
+                value={type}
                 name="type"
                 id="type"
               />
@@ -72,7 +85,7 @@ const ClassForm = (props) => {
                   backgroundColor: "#a9cbfa",
                 }}
                 onChange={handleChange}
-                value={classes.time}
+                value={time}
                 name="time"
                 id="time"
               >
@@ -105,7 +118,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.duration}
+                value={duration}
                 name="duration"
                 id="duration"
               />
@@ -115,7 +128,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.level}
+                value={level}
                 name="level"
                 id="level"
               />
@@ -125,7 +138,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.location}
+                value={location}
                 name="location"
                 id="location"
               />
@@ -135,7 +148,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.attend}
+                value={attend}
                 name="attend"
                 id="attend"
               />
@@ -145,7 +158,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.size}
+                value={size}
                 name="size"
                 id="size"
               />
@@ -214,4 +227,4 @@ const Button = styled.button`
   padding: 1rem;
   width: 30%;
 `;
-export default ClassForm;
+export default EditClassForm;
