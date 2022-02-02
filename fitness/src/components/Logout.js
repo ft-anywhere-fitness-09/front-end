@@ -1,4 +1,5 @@
-// import React, { useEffect } from "react";
+import React, { useEffect } from "react";
+import styled from "styled-components";
 // import { useHistory } from "react-router-dom";
 // import axiosWithAuth from "../utils/axiosWithAuth";
 
@@ -19,9 +20,39 @@ const Logout = () => {
 
   return (
     <div>
-      <h1>You are logged out</h1>
+      <h1 style={{ marginLeft: "23%" }}>Logged Out</h1>
+      <LogoutContainer>
+        <h4>Thank you for being part of Anywhere Fitness</h4>
+        <Button>
+          {
+            <a
+              href="/login"
+              style={{ textDecoration: "none", fontWeight: "bold" }}
+            >
+              Log in again
+            </a>
+          }
+        </Button>
+        <h3 style={{ marginLeft: "28%", fontWeight: "normal" }}>
+          See you Later!
+        </h3>
+      </LogoutContainer>
     </div>
   );
 };
+
+const LogoutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const Button = styled.button`
+  background-color: #7d98ec;
+  border-radius: 5px;
+  padding: 0.8rem;
+  width: 50%;
+  margin-left: 20%;
+`;
 
 export default Logout;

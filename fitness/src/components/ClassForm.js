@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const ClassForm = (props) => {
-    // const { push } = useHistory();
+  // const { push } = useHistory();
 
-    const { updateClasses } = props;
-	const [ classes, setClasses] = useState({
+  const { updateClasses } = props;
+  const [classes, setClasses] = useState({
     name: "",
     type: "",
     time: "",
@@ -30,14 +30,14 @@ const ClassForm = (props) => {
 
   const handleChange = (e) => {
     setClasses({
-        ...classes,
-        [e.target.name]: e.target.value
+      ...classes,
+      [e.target.name]: e.target.value,
     });
   };
 
   return (
     <ComponentContainer>
-      <StyledHeader>Create a New Class</StyledHeader>
+      <StyledHeader>Add a New Class</StyledHeader>
 
       <form onSubmit={handleSubmit}>
         <FormDiv>
@@ -170,7 +170,7 @@ const ComponentContainer = styled.div`
 const ModalContainer = styled.div`
   width: 500px;
   background: #ffdb58;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 `;
 
