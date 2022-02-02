@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <HeaderStyle>
-      <p>Anywhere Fitness 🏋️‍♀️</p>
+      <h1>Anywhere Fitness 🏋️‍♀️</h1>
       <MenuStyle>
         <li>
           <Link to="/home">Home</Link>
