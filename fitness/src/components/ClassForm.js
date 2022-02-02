@@ -53,14 +53,28 @@ const ClassForm = (props) => {
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="type">Class Type:</label>
+              <label htmlFor="type">Class Type:
               <br />
-              <Input
-                onChange={handleChange}
-                value={classes.type}
-                name="type"
-                id="type"
-              />
+              <select
+                  style={{
+                    padding: "1em",
+                    width: "60%",
+                    backgroundColor: "#a9cbfa",
+                    textAlign: 'center',
+                  }}
+                  onChange={handleChange}
+                  value={classes.type}
+                  name="type"
+                  id="type"                
+                >
+                  <option value=''>- Select an option -</option>
+                  <option value='aerobic'>Aerobic</option>
+                  <option value='strength'>Strength </option>
+                  <option value='balance'>Balance</option>
+                  <option value='endurance'>Endurance</option>
+                  <option value='flexibility'>Flexibility</option>
+                </select>
+              </label>
             </FormGroup>
             <FormGroup className="form-group">
               <label htmlFor="time">Class Time:</label>
@@ -70,6 +84,7 @@ const ClassForm = (props) => {
                   padding: "1em",
                   width: "60%",
                   backgroundColor: "#a9cbfa",
+                  textAlign: 'center',
                 }}
                 onChange={handleChange}
                 value={classes.time}
@@ -101,24 +116,38 @@ const ClassForm = (props) => {
               </select>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="duration">Class Duration:</label>
+              <label htmlFor="duration">Class Duration:
               <br />
+              
               <Input
                 onChange={handleChange}
                 value={classes.duration}
                 name="duration"
                 id="duration"
               />
+              </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="level">Intensity Level :</label>
+              <label htmlFor="level">Intensity Level :
               <br />
-              <Input
-                onChange={handleChange}
-                value={classes.level}
-                name="level"
-                id="level"
-              />
+                <select
+                  style={{
+                    padding: "1em",
+                    width: "60%",
+                    backgroundColor: "#a9cbfa",
+                    textAlign: 'center',
+                  }}
+                  onChange={handleChange}
+                  value={classes.level}
+                  name="level"
+                  id="level"                
+                >
+                  <option value=''>- Select an option -</option>
+                  <option value='beginner'>Beginner</option>
+                  <option value='intermediate'>Intermediate</option>
+                  <option value='advanced'>Advanced</option>
+                </select>
+              </label>
             </FormGroup>
             <FormGroup className="form-group">
               <label htmlFor="location">Class location:</label>
