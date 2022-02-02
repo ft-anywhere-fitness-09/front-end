@@ -12,13 +12,23 @@ const Login = () => {
         <h2>Log In </h2>
 
         <FormGroup onSubmit={handleSubmit} className="log-in">
-          <Input name="username" placeholder="Enter Username" type="text" />
+          <Input
+            name="username"
+            placeholder="Enter Username"
+            type="text"
+            onChange={handleChange}
+          />
           <br />
           <br />
-          <Input name="password" placeholder="Enter Password" type="password" />
+          <Input
+            name="password"
+            placeholder="Enter Password"
+            type="password"
+            onChange={handleChange}
+          />
           <br />
           <br />
-          <Button>Log In</Button>
+          <Button type="submit">Log In</Button>
         </FormGroup>
       </ModalContainer>
     </ComponentContainer>

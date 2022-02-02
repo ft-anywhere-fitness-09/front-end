@@ -7,7 +7,7 @@ const Header = () => {
     <HeaderStyle>
       <h1>Anywhere Fitness 🏋️‍♀️</h1>
       <MenuStyle>
-      <li>
+        <li>
           <Link to="/home">Home</Link>
         </li>
         <li>
@@ -34,7 +34,7 @@ export default Header;
 
 const HeaderStyle = styled.div`
   padding: 1em;
-  background-color: #daa1ac;
+  background-color: #ffdb58;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,7 +53,12 @@ const MenuStyle = styled.ul`
     a {
       text-decoration: none;
       color: black;
-      font-size: 1em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    a:hover {
+      color: #fa8c80;
+      text-decoration: underline;
     }
   }
 `;

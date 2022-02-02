@@ -18,6 +18,6 @@ code {
   font-size: medium;
 }
 
-::placeholder {
+.force-opaque::placeholder {
   opacity: 1;
 }

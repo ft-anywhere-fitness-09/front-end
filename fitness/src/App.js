@@ -16,9 +16,7 @@ import Class from "./components/Class";
 function App() {
   const [classes, setClasses] = useState([]);
 
-  const updateClasses = () => {
-
-  }
+  const updateClasses = () => {};
 
   return (
     <div className="App">
@@ -26,21 +24,31 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/classes/edit/:id">
-            <EditClassForm updateClasses={updateClasses} setClasses={setClasses}/>
+            <EditClassForm
+              updateClasses={updateClasses}
+              setClasses={setClasses}
+            />
           </Route>
           <Route path="/classes/:id">
-            <Class updateClasses={updateClasses}/>
+            <Class updateClasses={updateClasses} />
           </Route>
           <Route exact path="/classes" classes={classes}>
             <SearchClass />
           </Route>
-          <Route exact path="/form" updateClasses={updateClasses} setClasses={setClasses}>
+          <Route
+            exact
+            path="/form"
+            updateClasses={updateClasses}
+            setClasses={setClasses}
+          >
             <ClassForm />
           </Route>
           <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route exact path="/logout"></Route>
+          <Route exact path="/logout">
+            <Logout />
+          </Route>
           <Route exact path="/login">
             <Login />
           </Route>

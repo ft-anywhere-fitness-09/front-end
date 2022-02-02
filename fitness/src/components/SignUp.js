@@ -38,7 +38,7 @@ const Signup = () => {
           />
           <br />
           <br />
-          <Button>Sign Up</Button>
+          <Button type="submit">Sign Up</Button>
           <h4>Already a user? Log in!</h4>
         </FormGroup>
       </ModalContainer>
