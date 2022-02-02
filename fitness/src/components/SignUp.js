@@ -39,7 +39,14 @@ const Signup = () => {
           <br />
           <br />
           <Button type="submit">Sign Up</Button>
-          <h4>Already a user? Log in!</h4>
+          <h4>
+            Already a user?{" "}
+            {
+              <a style={{ color: "black" }} href="/login">
+                Log in!
+              </a>
+            }
+          </h4>
         </FormGroup>
       </ModalContainer>
     </ComponentContainer>
