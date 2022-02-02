@@ -53,7 +53,7 @@ const ClassForm = (props) => {
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="type">Class Type:
+              <label htmlFor="type">Type:
               <br />
               <select
                   style={{
@@ -77,7 +77,7 @@ const ClassForm = (props) => {
               </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="time">Class Time:</label>
+              <label htmlFor="time">Time:</label>
               <br />
               <select
                 style={{
@@ -116,7 +116,7 @@ const ClassForm = (props) => {
               </select>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="duration">Class Duration:
+              <label htmlFor="duration">Duration:
               <br />
               
               <Input
@@ -150,7 +150,7 @@ const ClassForm = (props) => {
               </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="location">Class location:</label>
+              <label htmlFor="location">Location:</label>
               <br />
               <Input
                 onChange={handleChange}
@@ -170,7 +170,7 @@ const ClassForm = (props) => {
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor=" size">Class size:</label>
+              <label htmlFor=" size">Size:</label>
               <br />
               <Input
                 onChange={handleChange}
