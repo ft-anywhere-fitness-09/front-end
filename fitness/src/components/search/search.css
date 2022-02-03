@@ -1,97 +1,95 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  /* margin: 0;
+  padding: 0; */
+  box-sizing: border-box;
 }
 
-body{
-    font-family: 'Varela Round', sans-serif;
-    
-    font-size: 1rem;
+body {
+  font-family: "Varela Round", sans-serif;
+
+  font-size: 1rem;
+}
+h2 {
+  font-size: 3rem;
+  color: #0c3564;
 }
 
-h2{
-    font-size: 3rem;
-    color: #0C3564;
+.title {
+  padding: 2rem 0;
+  text-align: center;
 }
 
-.title{
-    padding: 2rem 0;
-    text-align: center;
+h3 {
+  /* font-size: 2rem; */
+  font-weight: 200;
+  margin: 1rem 0;
+  color: white;
 }
 
-h3{
-    font-size: 2rem;
-    font-weight: 200;
-    margin: 1rem 0;
-    color: white
+h3:hover {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: #037fff;
 }
 
-h3:hover{
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-    color: #037FFF;
+p {
+  color: rgba(255, 255, 255, 0.596);
 }
 
-p{
-    color: rgba(255, 255, 255, 0.596);
+.item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  padding-bottom: 6rem;
 }
 
-.item{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3rem;
-    padding-bottom: 6rem;
+.item-container {
+  overflow: hidden;
 }
 
-.item-container{
-    overflow: hidden;
+.item-con {
+  width: 100%;
+  padding: 1rem 1rem;
+  background-color: #0c3564;
 }
 
-.item-con{
-    width: 100%;
-    padding: 1rem 1rem;
-    background-color: #19202E;
-    
+.item-container > img {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
 }
 
-.item-container > img{
-    width: 100%;
-    transition: all .3s ease-in-out;
+.item-container > img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-.item-container > img:hover{
-    transform: scale(1.1);
-    cursor: pointer;
+.buttons {
+  width: 70%;
+  margin: 3rem auto;
+  text-align: center;
 }
 
-
-.buttons{
-    width: 70%;
-    margin: 3rem auto;
-    text-align: center;
+.btn {
+  padding: 1rem 1rem;
+  background-color: #0c3564;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: white;
+  transition: all 0.4s cubic-bezier(1, -0.16, 0.6, 1.35);
 }
 
-.btn{
-    padding: 1rem 1rem;
-    background-color: #0C3564;
-    border: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: white;
-    transition: all 0.4s cubic-bezier(1,-0.16,.6,1.35);
+.btn:not(:last-child) {
+  margin-right: 1rem;
 }
 
-.btn:not(:last-child){
-    margin-right: 1rem;
+.btn:hover {
+  background-color: #037fff;
+  cursor: pointer;
 }
 
-.btn:hover{
-    background-color: #037FFf;
-    cursor: pointer;
-}
-
-.btn:active, .btn:focus{
-    outline: none;
-    border: none;
+.btn:active,
+.btn:focus {
+  outline: none;
+  border: none;
 }
