@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 // import { useHistory } from "react-router-dom";
 // import axiosWithAuth from "../utils/axiosWithAuth";
@@ -24,7 +25,8 @@ const Logout = () => {
       <h1 style={{ marginLeft: "23%" }}>Logged Out</h1>
       <LogoutContainer>
         <h4>Thank you for being part of Anywhere Fitness</h4>
-        <Button>
+        <Link to="/login">
+        <Button >
           {
             <a
               href="/login"
@@ -38,6 +40,7 @@ const Logout = () => {
             </a>
           }
         </Button>
+        </Link>
         <h3 style={{ marginLeft: "28%", fontWeight: "normal" }}>
           See you Later!
         </h3>

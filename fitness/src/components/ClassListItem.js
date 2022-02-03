@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const ClassListItem = (props) => {
     const { id, name, type, time, duration, level, location, attend, size } = props.classes;
 
+
     return (
         <tr key={id}>
             <td>{name}</td>

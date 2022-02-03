@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
-// import { useHistory } from "react-router-dom";
-// import axios from "axios";
 
 const Signup = () => {
   const [state, setState] = useState({
@@ -26,15 +27,31 @@ const Signup = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    axiosWithAuth()
-      .post("/api/auth/clients/register", state)
-      .then((resp) => {
-        console.log(resp);
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+    console.log(state);
+    if (state.role_type === "client") {
+      axiosWithAuth()
+        .post("/api/auth/register", state)
+        .then((resp) => {
+          console.log(resp);
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    } else if (state.role_type === "instructor") {
+      axiosWithAuth()
+        .post("/api/auth/register", {
+          ...state,
+          auth_code: "auth_instructor_123",
+        })
+        .then((resp) => {
+          console.log(resp);
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    } else {
+      return alert("error");
+    }
   };
   return (
     <ComponentContainer>
@@ -45,13 +62,14 @@ const Signup = () => {
           <div style={{ marginBottom: "5%" }}>
             <label style={{ fontWeight: "bold" }}>Role: </label>
             <select
+              name="role_type"
               onChange={changeHandler}
               style={{ padding: "0.1em", backgroundColor: "#b1cffa" }}
             >
-              <option name="client_name" value={"client"}>
+              <option name="role_type" value={"client"}>
                 Client
               </option>
-              <option name="instructor" value={"instructor"}>
+              <option name="role_type" value={"instructor"}>
                 Instructor
               </option>
             </select>
@@ -68,7 +86,7 @@ const Signup = () => {
           <br />
           <br />
           <Input
-            name="client_name"
+            name="username"
             placeholder="Enter username"
             type="text"
             onChange={changeHandler}
