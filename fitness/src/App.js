@@ -12,6 +12,7 @@ import SearchClass from "../src/components/SearchClass";
 import Layout from "../src/components/Layout";
 import EditClassForm from "./components/EditClassForm";
 import Class from "./components/Class";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const [classes, setClasses] = useState([]);
