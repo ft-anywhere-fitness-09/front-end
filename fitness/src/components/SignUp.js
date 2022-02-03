@@ -1,43 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+
 const Signup = () => {
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+    role_type: "",
+  });
+
+  const [message, setMessage] = useState("");
+
+  const { push } = useHistory();
+
+  const changeHandler = (e) => {
+    console.log(e.target.value);
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        "https://ft-anywhere-fitness-09.herokuapp.com/api/auth/register",
+        state
+      )
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log({ err });
+      });
+  };
   return (
     <ComponentContainer>
       <ModalContainer>
         <h1>Sign Up for our Classes 💪</h1>
         <h2 style={{ fontWeight: "initial" }}>Fill Out The Information </h2>
-        <FormGroup onSubmit={handleSubmit} className="sign-up">
+        <FormGroup onSubmit={submitHandler} className="sign-up">
           <div style={{ marginBottom: "5%" }}>
             <label style={{ fontWeight: "bold" }}>Role: </label>
-            <select style={{ padding: "0.1em", backgroundColor: "#b1cffa" }}>
-              <option value={"client"}>Client</option>
-              <option value={"instructor"}>Instructor</option>
+            <select
+              onChange={changeHandler}
+              style={{ padding: "0.1em", backgroundColor: "#b1cffa" }}
+            >
+              <option name="client" value={"client"}>
+                Client
+              </option>
+              <option name="instructor" value={"instructor"}>
+                Instructor
+              </option>
             </select>
           </div>
-          <Input
+          {/* <Input
             name="email"
             placeholder="Enter email"
             type="email"
-            onChange={handleChange}
+            onChange={changeHandler}
+          /> */}
+          {/* <br /> */}
+          {/* <br /> */}
+
+          <br />
+          <br />
+          <Input
+            name="Username"
+            placeholder="Enter username"
+            type="text"
+            onChange={changeHandler}
           />
-          <br />
-          <br />
-          <Input name="Name" placeholder="Enter Name" type="text" />
-          <br />
-          <br />
-          <Input name="Username" placeholder="Enter username" type="text" />
           <br />
           <br />
           <Input
             name="password"
             placeholder="Create Password"
             type="password"
+            onChange={changeHandler}
           />
           <br />
           <br />
+          {/* <Input
+            name="auth_type"
+            placeholder="Enter code"
+            type="text"
+            onChange={changeHandler}
+          /> */}
           <Button type="submit">Sign Up</Button>
           <h4>
             Already a user?{" "}

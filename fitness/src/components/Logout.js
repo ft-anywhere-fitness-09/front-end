@@ -5,8 +5,9 @@ import styled from "styled-components";
 // import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Logout = () => {
-  // const { push } = useHistory();
+  //   const { push } = useHistory();
 
+  //   };
   // useEffect(() => {
   //     axiosWithAuth()
   //     .post('/logout')
@@ -29,7 +30,11 @@ const Logout = () => {
           {
             <a
               href="/login"
-              style={{ textDecoration: "none", fontWeight: "bold" }}
+              style={{
+                textDecoration: "none",
+                fontWeight: "bold",
+                color: "black",
+              }}
             >
               Log in again
             </a>
