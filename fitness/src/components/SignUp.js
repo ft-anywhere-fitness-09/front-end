@@ -3,12 +3,14 @@ import styled from "styled-components";
 
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Signup = () => {
   const [state, setState] = useState({
     username: "",
     password: "",
     role_type: "",
+    auth_code:""
   });
 
   const [message, setMessage] = useState("");
@@ -25,18 +27,34 @@ const Signup = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    axios
+    console.log(state)
+    if( state.role_type === "client"){
+    axiosWithAuth()
       .post(
-        "https://ft-anywhere-fitness-09.herokuapp.com/api/auth/register",
+        "/api/auth/register",
         state
       )
       .then((resp) => {
         console.log(resp);
       })
       .catch((err) => {
-        console.log({ err });
-      });
+        console.log({ err }) }) ;
+      } else if ( state.role_type === "instructor"){
+        axiosWithAuth()
+        .post(
+        "/api/auth/register",
+        ({...state, auth_code: "auth_instructor_123"})
+      )
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log({ err })});
+      } else {
+        return alert('error')
+      }
+      
+    
   };
   return (
     <ComponentContainer>
@@ -47,13 +65,14 @@ const Signup = () => {
           <div style={{ marginBottom: "5%" }}>
             <label style={{ fontWeight: "bold" }}>Role: </label>
             <select
+              name="role_type"
               onChange={changeHandler}
               style={{ padding: "0.1em", backgroundColor: "#b1cffa" }}
             >
-              <option name="client" value={"client"}>
+              <option name="role_type" value={"client"}>
                 Client
               </option>
-              <option name="instructor" value={"instructor"}>
+              <option name="role_type" value={"instructor"}>
                 Instructor
               </option>
             </select>
@@ -70,7 +89,7 @@ const Signup = () => {
           <br />
           <br />
           <Input
-            name="Username"
+            name="username"
             placeholder="Enter username"
             type="text"
             onChange={changeHandler}
