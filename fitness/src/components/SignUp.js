@@ -13,9 +13,9 @@ const Signup = () => {
     auth_code: "",
   });
 
-  //   const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
-  //   const { push } = useHistory();
+  const { push } = useHistory();
 
   const changeHandler = (e) => {
     // console.log(e.target.value);
@@ -33,9 +33,11 @@ const Signup = () => {
         .post("/api/auth/register", state)
         .then((resp) => {
           console.log(resp);
+          push("/login");
         })
         .catch((err) => {
           console.log({ err });
+          setMessage(err.response.data.message);
         });
     } else if (state.role_type === "instructor") {
       axiosWithAuth()
@@ -48,6 +50,7 @@ const Signup = () => {
         })
         .catch((err) => {
           console.log({ err });
+          setMessage(err.response.data.message);
         });
     } else {
       return alert("error");
@@ -108,6 +111,11 @@ const Signup = () => {
             onChange={changeHandler}
           /> */}
           <Button type="submit">Sign Up</Button>
+          {message && (
+            <p style={{ color: "black" }} id="error">
+              {message}
+            </p>
+          )}
           <h4>
             Already a user?{" "}
             {
