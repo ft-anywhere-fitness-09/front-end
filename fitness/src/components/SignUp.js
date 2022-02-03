@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
+// import { useHistory } from "react-router-dom";
+// import axios from "axios";
 
 const Signup = () => {
   const [state, setState] = useState({
     username: "",
     password: "",
     role_type: "",
+    auth_code: "",
   });
 
-  const [message, setMessage] = useState("");
+  //   const [message, setMessage] = useState("");
 
-  const { push } = useHistory();
+  //   const { push } = useHistory();
 
   const changeHandler = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setState({
       ...state,
       [e.target.name]: e.target.value,
@@ -26,11 +27,8 @@ const Signup = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    axios
-      .post(
-        "https://ft-anywhere-fitness-09.herokuapp.com/api/auth/register",
-        state
-      )
+    axiosWithAuth()
+      .post("/api/auth/clients/register", state)
       .then((resp) => {
         console.log(resp);
       })
@@ -50,7 +48,7 @@ const Signup = () => {
               onChange={changeHandler}
               style={{ padding: "0.1em", backgroundColor: "#b1cffa" }}
             >
-              <option name="client" value={"client"}>
+              <option name="client_name" value={"client"}>
                 Client
               </option>
               <option name="instructor" value={"instructor"}>
@@ -70,7 +68,7 @@ const Signup = () => {
           <br />
           <br />
           <Input
-            name="Username"
+            name="client_name"
             placeholder="Enter username"
             type="text"
             onChange={changeHandler}

@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
+import axiosWithAuth from "../utils/axiosWithAuth";
 const Login = () => {
-  const handleChange = (e) => {};
-  const handleSubmit = (e) => {};
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // console.log(login);
+    // axiosWithAuth()
+    //   .post("/api/auth/login", login)
+    //   .then((resp) => {
+    //     console.log(resp);
+    //   })
+    //   .catch((err) => {
+    //     console.log({ err });
+    //   });
+  };
 
   return (
     <ComponentContainer>
