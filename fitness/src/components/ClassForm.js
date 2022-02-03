@@ -128,7 +128,7 @@ const ClassForm = (props) => {
               </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="level">Intensity Level :
+              <label htmlFor="level">Intensity Level:
               <br />
                 <select
                   style={{
@@ -170,7 +170,7 @@ const ClassForm = (props) => {
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor=" size">Size:</label>
+              <label htmlFor=" size">Max Size:</label>
               <br />
               <Input
                 onChange={handleChange}
