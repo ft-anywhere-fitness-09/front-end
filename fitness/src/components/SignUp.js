@@ -42,8 +42,8 @@ const Signup = () => {
       } else if ( state.role_type === "instructor"){
         axiosWithAuth()
         .post(
-        "/api/auth/register", state
-        // {username: state.username, password: state.password, role_type: state.role_type, auth_code: "auth_instructor_123"}
+        "/api/auth/register", 
+        {username: state.username, password: state.password, role_type: state.role_type, auth_code: "auth_instructor_123"}
       )
       .then((resp) => {
         console.log(resp);
@@ -111,6 +111,11 @@ const Signup = () => {
             onChange={changeHandler}
           />
           <Button type="submit">Sign Up</Button>
+          {message && (
+            <p style={{ color: "black" }} id="error">
+              {message}
+            </p>
+          )}
           <h4>gi
             Already a user?{" "}
             {
