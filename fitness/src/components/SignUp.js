@@ -27,7 +27,6 @@ const Signup = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(state)
     if( state.role_type === "client"){
     axiosWithAuth()
       .post(
@@ -42,8 +41,8 @@ const Signup = () => {
       } else if ( state.role_type === "instructor"){
         axiosWithAuth()
         .post(
-        "/api/auth/register", 
-        {username: state.username, password: state.password, role_type: state.role_type, auth_code: "auth_instructor_123"}
+        "/api/auth/register", state
+        // {username: state.username, password: state.password, role_type: state.role_type, auth_code: "auth_instructor_123"}
       )
       .then((resp) => {
         console.log(resp);

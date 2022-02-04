@@ -1,24 +1,23 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-// import { useHistory } from "react-router-dom";
-// import axiosWithAuth from "../utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Logout = () => {
-  //   const { push } = useHistory();
+  const { push } = useHistory();
 
-  //   };
-  // useEffect(() => {
-  //     axiosWithAuth()
-  //     .post('/logout')
-  //     .then(resp => {
-  //         localStorage.removeItem('token')
-  //         push('/login');
-  //     }).catch(error => {
-  //         console.log(error)
-  //     })
-
-  // }, [])
+  useEffect(() => {
+    axiosWithAuth()
+      .post("/logout")
+      .then((resp) => {
+        localStorage.removeItem("token");
+        push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div>
@@ -26,20 +25,20 @@ const Logout = () => {
       <LogoutContainer>
         <h4>Thank you for being part of Anywhere Fitness</h4>
         <Link to="/login">
-        <Button >
-          {
-            <a
-              href="/login"
-              style={{
-                textDecoration: "none",
-                fontWeight: "bold",
-                color: "black",
-              }}
-            >
-              Log in again
-            </a>
-          }
-        </Button>
+          <Button>
+            {
+              <a
+                href="/login"
+                style={{
+                  textDecoration: "none",
+                  fontWeight: "bold",
+                  color: "black",
+                }}
+              >
+                Log in again
+              </a>
+            }
+          </Button>
         </Link>
         <h3 style={{ marginLeft: "28%", fontWeight: "normal" }}>
           See you Later!
