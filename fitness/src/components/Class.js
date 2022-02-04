@@ -15,7 +15,7 @@ const Class = (props) => {
         axios.get(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`)
             .then(resp=>{
                 console.log(resp)
-                // setClasses(resp.data);
+                setClasses(resp.data);
             })
             .catch(error=>{
                 console.log({error});
@@ -23,49 +23,49 @@ const Class = (props) => {
     }, [class_id]);
 
     const handleDelete = () => {
-        // axios.delete(``)
-        //     .then(resp=>{
-        //         updateClasses(resp.data);
-        //         push('/classes')
-        //     })
-        //     .catch(error=>{
-        //         console.log(error);
-        //     })
+        axios.delete(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`)
+            .then(resp=>{
+                setClasses(resp.data);
+                push('/classes')
+            })
+            .catch(error=>{
+                console.log(error);
+            })
     }
 
     return(<div className="modal-page col">
         <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">						
-                    <h4 className="modal-title">{classes.name} Details</h4>
+                    <h4 className="modal-title">{classes.class_name} Details</h4>
                 </div>
                 <div className="modal-body">
                     <div className="flexContainer">
 
                         <section className="movie-details">
                             <div>
-                                <label>Class Name: <strong>{classes.name}</strong></label>
+                                <label>Class Name: <strong>{classes.class_name}</strong></label>
                             </div>
                             <div>
-                                <label>Class Type: <strong>{classes.type}</strong></label>
+                                <label>Class Type: <strong>{classes.type_id}</strong></label>
                             </div>
                             <div>
-                                <label>Start Time: <strong>{classes.time}</strong></label>
+                                <label>Start Time: <strong>{classes.start_time}</strong></label>
                             </div>
                             <div>
-                                <label>Duration: <strong>{classes.duration}</strong></label>
+                                <label>Duration: <strong>{classes.class_duration}</strong></label>
                             </div>
                             <div>
-                                <label>Intensity Level: <strong>{classes.level}</strong></label>
+                                <label>Intensity Level: <strong>{classes.intensity_id}</strong></label>
                             </div>
                             <div>
-                                <label>Location: <strong>{classes.location}</strong></label>
+                                <label>Location: <strong>{classes.class_location}</strong></label>
                             </div>
                             <div>
-                                <label>Number of Attendees: <strong>{classes.attend}</strong></label>
+                                <label>Number of Attendees: <strong>{classes.class_instructor}</strong></label>
                             </div>
                             <div>
-                                <label>Max Class Size: <strong>{classes.size}</strong></label>
+                                <label>Max Class Size: <strong>{classes.max_class_size}</strong></label>
                             </div>
                         </section>
                         

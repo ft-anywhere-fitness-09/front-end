@@ -24,13 +24,13 @@ function App() {
       <Header />
       <Layout>
         <Switch>
-          <Route path="/classes/edit/:id">
+          <Route path="/classes/edit/:class_id">
             <EditClassForm
               // updateClasses={updateClasses}
               // setClasses={setClasses}
             />
           </Route>
-          <Route path="/classes/:id">
+          <Route path="/classes/:class_id">
             <Class />
           </Route>
           <Route exact path="/classes" >
