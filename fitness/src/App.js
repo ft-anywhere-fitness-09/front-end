@@ -36,14 +36,14 @@ function App() {
           <Route exact path="/classes" classes={classes}>
             <SearchClass />
           </Route>
-          <Route
+          <PrivateRoute
             exact
             path="/form"
-            updateClasses={updateClasses}
-            setClasses={setClasses}
-          >
-            <ClassForm />
-          </Route>
+            // updateClasses={updateClasses}
+            // setClasses={setClasses}
+            component={ClassForm}
+          />
+
           <Route exact path="/signup">
             <Signup />
           </Route>
