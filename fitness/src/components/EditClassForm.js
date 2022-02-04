@@ -5,28 +5,41 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const EditClassForm = (props) => {
-	// const { push } = useHistory();
-    const { id } = useParams();
-
+	const { push } = useHistory();
+    const { class_id } = useParams();
+ 
 	const { updateClasses } = props;
 	const [ classes, setClasses] = useState({
-        name: "",
-        type: "",
-        time: "",
-        duration: 0,
-        level: 0,
-        location: "",
-        attend: 0,
-        size: 0,
+    class_name: "",
+    type_id: 0,
+    class_date: "",
+    start_time: "",
+    class_duration: "",
+    class_location: "",
+    intensity_id: 0,
+    class_instructor: 0,
+    max_class_size: 0,
 	});
+  // const {
+  //   class_id,
+  //   type_id,
+  //   class_name,
+  //   class_date,
+  //   start_time,
+  //   class_duration,
+  //   intensity_id,
+  //   class_location,
+  //   max_class_size,
+  //   class_instructor,
+  // } = props.classes;
 
    
     useEffect(()=>{
-        // axios.get(`http://localhost:9000/api/classes/${id}`)
-        //     .then(res=>{
-        //         setClasses(res.data);
-        //     })
-	}, [id]);
+        axios.get(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`)
+            .then(res=>{
+                setClasses(res.data);
+            })
+	}, [class_id]);
 	
 	const handleChange = (e) => {
         setClasses({
@@ -37,20 +50,21 @@ const EditClassForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // axios.put(`http://localhost:9000/api/classes/${id}`, classes)
-        //     .then(resp=>{
-        //         updateClasses(resp.data);
-        //         push(`/classes/${classes.id}`);
-		// 	})
-		// 	.catch(error=>{
-		// 		console.log(error);
-		// 	})
+        axios.put(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`, classes)
+            .then(resp=>{
+              console.log(resp)
+                // setClasses(resp.data);
+              push(`/classes/${class_id}`);
+			})
+			.catch(error=>{
+				console.log(error);
+			})
 	}
-    const { name, type, time, duration, level, location, attend, size } = classes;
+
 
     return (
 	    <ComponentContainer>
-      <StyledHeader>Edit {classes.name}</StyledHeader>
+      <StyledHeader>Edit {classes.class_name}</StyledHeader>
 
       <form onSubmit={handleSubmit}>
         <FormDiv>
@@ -60,33 +74,59 @@ const EditClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={name}
-                name="name"
+                value={classes.class_name}
+                name="class_name"
                 id="name"
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="type">Class Type:</label>
+              <label htmlFor="type">
+                Type:
+                <br />
+                <select
+                  style={{
+                    padding: "1em",
+                    width: "60%",
+                    backgroundColor: "#a9cbfa",
+                    textAlign: "center",
+                  }}
+                  onChange={handleChange}
+                  value={classes.type_id}
+                  name="type_id"
+                  id="type"
+                >
+                  <option value={0}>- Select an option -</option>
+                  <option value={1}>Aerobic</option>
+                  <option value={2}>Strength </option>
+                  <option value={3}>Balance</option>
+                  <option value={4}>Endurance</option>
+                  <option value={5}>Flexibility</option>
+                </select>
+              </label>
+            </FormGroup>
+            <FormGroup className="form-group">
+              <label htmlFor="date">Class Date:</label>
               <br />
               <Input
                 onChange={handleChange}
-                value={type}
-                name="type"
-                id="type"
+                value={classes.class_date}
+                name="class_date"
+                id="date"
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="time">Class Time:</label>
+              <label htmlFor="time">Time:</label>
               <br />
               <select
                 style={{
                   padding: "1em",
                   width: "60%",
                   backgroundColor: "#a9cbfa",
+                  textAlign: "center",
                 }}
                 onChange={handleChange}
-                value={time}
-                name="time"
+                value={classes.start_time}
+                name="start_time"
                 id="time"
               >
                 <option value={"0:00-1:00"}>0:00-1:00</option>
@@ -114,59 +154,75 @@ const EditClassForm = (props) => {
               </select>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="duration">Class Duration:</label>
-              <br />
-              <Input
-                onChange={handleChange}
-                value={duration}
-                name="duration"
-                id="duration"
-              />
+              <label htmlFor="duration">
+                Duration:
+                <br />
+                <Input
+                  onChange={handleChange}
+                  value={classes.class_duration}
+                  name="class_duration"
+                  id="duration"
+                />
+              </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="level">Intensity Level :</label>
-              <br />
-              <Input
-                onChange={handleChange}
-                value={level}
-                name="level"
-                id="level"
-              />
+              <label htmlFor="level">
+                Intensity Level:
+                <br />
+                <select
+                  style={{
+                    padding: "1em",
+                    width: "60%",
+                    backgroundColor: "#a9cbfa",
+                    textAlign: "center",
+                  }}
+                  onChange={handleChange}
+                  value={classes.intensity_id}
+                  name="intensity_id"
+                  id="level"
+                >
+                  <option value={0}>- Select an option -</option>
+                  <option value={1}>Beginner</option>
+                  <option value={2}>Intermediate</option>
+                  <option value={3}>Advanced</option>
+                </select>
+              </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="location">Class location:</label>
+              <label htmlFor="location">Location:</label>
               <br />
               <Input
                 onChange={handleChange}
-                value={location}
-                name="location"
+                value={classes.class_location}
+                name="class_location"
                 id="location"
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="attend">Number of Attendees:</label>
+              <label htmlFor=" size">Max Size:</label>
               <br />
               <Input
                 onChange={handleChange}
-                value={attend}
-                name="attend"
-                id="attend"
-              />
-            </FormGroup>
-            <FormGroup className="form-group">
-              <label htmlFor=" size">Class size:</label>
-              <br />
-              <Input
-                onChange={handleChange}
-                value={size}
-                name="size"
+                value={classes.max_class_size}
+                name="max_class_size"
                 id="size"
               />
             </FormGroup>
+            <FormGroup className="form-group">
+              <label htmlFor="instructor">Instructors:</label>
+              <br />
+              <Input
+                onChange={handleChange}
+                value={classes.class_instructor}
+                name="class_instructor"
+                id="instructor"
+              />
+            </FormGroup>
+
             {/* {
                 errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
             } */}
-            <Button>Create Class</Button>
+            <Button>Update Class</Button>
           </ModalContainer>
         </FormDiv>
       </form>

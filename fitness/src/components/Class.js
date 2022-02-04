@@ -4,7 +4,6 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Class = (props) => {
-    const { updateClasses } = props;
 
     const [classes, setClasses] = useState('');
 
@@ -71,7 +70,7 @@ const Class = (props) => {
                         
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
-                            <Link to={`/classes/edit/${classes.class_id}`} className="m-2 btn btn-success">Edit</Link>
+                            <Link classes={classes} to={`/classes/edit/${classes.class_id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"><input onClick={handleDelete} type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>
                     </div>

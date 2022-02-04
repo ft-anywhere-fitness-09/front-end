@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 const ClassForm = (props) => {
   const { push } = useHistory();
 
-  const { updateClasses } = props;
   const [classes, setClasses] = useState({
     class_name: "",
     type_id: 0,
@@ -32,7 +31,7 @@ const ClassForm = (props) => {
       .post(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes`, classes)
       .then((resp) => {
         console.log(resp);
-        updateClasses(resp.data);
+        setClasses(resp.data);
         push(`/classes`);
       })
       .catch((error) => {
@@ -181,7 +180,7 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.size}
+                value={classes.max_class_size}
                 name="max_class_size"
                 id="size"
               />
