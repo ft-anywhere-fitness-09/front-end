@@ -35,6 +35,7 @@ function SearchClass() {
   const filter = (button) => {
     if (button === "All") {
       setMenuItem(items);
+
       return;
     }
 
@@ -66,12 +67,12 @@ function SearchClass() {
       </div>
 
       <Button button={typebuttons} filter={filter} />
-      <Button button={timebuttons} filter={filter} />
+      {/* <Button button={timebuttons} filter={filter} />
       <Button button={durationbuttons} filter={filter} />
       <Button button={levelbuttons} filter={filter} />
       <Button button={locationbuttons} filter={filter} />
       <Button button={attendbuttons} filter={filter} />
-      <Button button={sizebuttons} filter={filter} />
+      <Button button={sizebuttons} filter={filter} /> */}
 
       <Menu menuItem={menuItem} />
     </div>
