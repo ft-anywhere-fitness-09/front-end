@@ -1,38 +1,43 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const ClassForm = (props) => {
-  // const { push } = useHistory();
+  const { push } = useHistory();
 
   const { updateClasses } = props;
   const [classes, setClasses] = useState({
-    name: "",
-    type: "",
-    time: "",
-    duration: 0,
-    level: 0,
-    location: "",
-    attend: 0,
-    size: 0,
+    class_name: "",
+    type_id: 0,
+    class_date: "",
+    start_time: "",
+    class_duration: "",
+    class_location: "",
+    intensity_id: 0,
+    class_instructor: 0,
+    max_class_size: 0,
   });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // axios.post(`http://localhost:9000/api/classes`, classes)
-    //     .then(resp=>{
-    //         updateClasses(resp.data)
-    //         push(`/classes`);
-    //     })
-    //     .catch(error=>{
-    //         console.log(error);
-    //     })
-  };
 
   const handleChange = (e) => {
     setClasses({
       ...classes,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes`, classes)
+      .then((resp) => {
+        console.log(resp);
+        updateClasses(resp.data);
+        push(`/classes`);
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
   };
 
   return (
@@ -47,34 +52,45 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.name}
-                name="name"
+                value={classes.class_name}
+                name="class_name"
                 id="name"
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="type">Type:
-              <br />
-              <select
+              <label htmlFor="type">
+                Type:
+                <br />
+                <select
                   style={{
                     padding: "1em",
                     width: "60%",
                     backgroundColor: "#a9cbfa",
-                    textAlign: 'center',
+                    textAlign: "center",
                   }}
                   onChange={handleChange}
-                  value={classes.type}
-                  name="type"
-                  id="type"                
+                  value={classes.type_id}
+                  name="type_id"
+                  id="type"
                 >
-                  <option value=''>- Select an option -</option>
-                  <option value='aerobic'>Aerobic</option>
-                  <option value='strength'>Strength </option>
-                  <option value='balance'>Balance</option>
-                  <option value='endurance'>Endurance</option>
-                  <option value='flexibility'>Flexibility</option>
+                  <option value={0}>- Select an option -</option>
+                  <option value={1}>Aerobic</option>
+                  <option value={2}>Strength </option>
+                  <option value={3}>Balance</option>
+                  <option value={4}>Endurance</option>
+                  <option value={5}>Flexibility</option>
                 </select>
               </label>
+            </FormGroup>
+            <FormGroup className="form-group">
+              <label htmlFor="date">Class Date:</label>
+              <br />
+              <Input
+                onChange={handleChange}
+                value={classes.class_date}
+                name="class_date"
+                id="date"
+              />
             </FormGroup>
             <FormGroup className="form-group">
               <label htmlFor="time">Time:</label>
@@ -84,11 +100,11 @@ const ClassForm = (props) => {
                   padding: "1em",
                   width: "60%",
                   backgroundColor: "#a9cbfa",
-                  textAlign: 'center',
+                  textAlign: "center",
                 }}
                 onChange={handleChange}
-                value={classes.time}
-                name="time"
+                value={classes.start_time}
+                name="start_time"
                 id="time"
               >
                 <option value={"0:00-1:00"}>0:00-1:00</option>
@@ -116,36 +132,37 @@ const ClassForm = (props) => {
               </select>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="duration">Duration:
-              <br />
-              
-              <Input
-                onChange={handleChange}
-                value={classes.duration}
-                name="duration"
-                id="duration"
-              />
+              <label htmlFor="duration">
+                Duration:
+                <br />
+                <Input
+                  onChange={handleChange}
+                  value={classes.class_duration}
+                  name="class_duration"
+                  id="duration"
+                />
               </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="level">Intensity Level:
-              <br />
+              <label htmlFor="level">
+                Intensity Level:
+                <br />
                 <select
                   style={{
                     padding: "1em",
                     width: "60%",
                     backgroundColor: "#a9cbfa",
-                    textAlign: 'center',
+                    textAlign: "center",
                   }}
                   onChange={handleChange}
-                  value={classes.level}
-                  name="level"
-                  id="level"                
+                  value={classes.intensity_id}
+                  name="intensity_id"
+                  id="level"
                 >
-                  <option value=''>- Select an option -</option>
-                  <option value='beginner'>Beginner</option>
-                  <option value='intermediate'>Intermediate</option>
-                  <option value='advanced'>Advanced</option>
+                  <option value={0}>- Select an option -</option>
+                  <option value={1}>Beginner</option>
+                  <option value={2}>Intermediate</option>
+                  <option value={3}>Advanced</option>
                 </select>
               </label>
             </FormGroup>
@@ -154,19 +171,9 @@ const ClassForm = (props) => {
               <br />
               <Input
                 onChange={handleChange}
-                value={classes.location}
-                name="location"
+                value={classes.class_location}
+                name="class_location"
                 id="location"
-              />
-            </FormGroup>
-            <FormGroup className="form-group">
-              <label htmlFor="attend">Number of Attendees:</label>
-              <br />
-              <Input
-                onChange={handleChange}
-                value={classes.attend}
-                name="attend"
-                id="attend"
               />
             </FormGroup>
             <FormGroup className="form-group">
@@ -175,10 +182,21 @@ const ClassForm = (props) => {
               <Input
                 onChange={handleChange}
                 value={classes.size}
-                name="size"
+                name="max_class_size"
                 id="size"
               />
             </FormGroup>
+            <FormGroup className="form-group">
+              <label htmlFor="instructor">Instructors:</label>
+              <br />
+              <Input
+                onChange={handleChange}
+                value={classes.class_instructor}
+                name="class_instructor"
+                id="instructor"
+              />
+            </FormGroup>
+
             {/* {
                 errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
             } */}

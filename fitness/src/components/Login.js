@@ -17,10 +17,11 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(login);
     axiosWithAuth()
       .post("/api/auth/login", login)
       .then((resp) => {
+        console.log(resp);
         localStorage.setItem("token", resp.data.token);
         push("/classes");
       })

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Signup = () => {
@@ -17,7 +17,7 @@ const Signup = () => {
   const { push } = useHistory();
 
   const changeHandler = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setState({
       ...state,
       [e.target.name]: e.target.value,
@@ -44,7 +44,7 @@ const Signup = () => {
 
         .then((resp) => {
           console.log(resp);
-          push("/form");
+          push("/login");
         })
         .catch((err) => {
           console.log({ err });
@@ -94,7 +94,6 @@ const Signup = () => {
           />
           <br />
           <br />
-
           <Button type="submit">Sign Up</Button>
           {message && (
             <p style={{ color: "black" }} id="error">
@@ -102,7 +101,7 @@ const Signup = () => {
             </p>
           )}
           <h4>
-            Already a user?{" "}
+            gi Already a user?{" "}
             {
               <a style={{ color: "black" }} href="/login">
                 Log in!
