@@ -28,15 +28,16 @@ const ClassForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes`, classes)
-        .then(resp=>{
-          console.log(resp)
-            // updateClasses(resp.data)
-            // push(`/classes`);
-        })
-        .catch(error=>{
-            console.log({error});
-        })
+    axios
+      .post(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes`, classes)
+      .then((resp) => {
+        console.log(resp);
+        updateClasses(resp.data);
+        push(`/classes`);
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
   };
 
   return (
@@ -57,19 +58,20 @@ const ClassForm = (props) => {
               />
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="type">Type:
-              <br />
-              <select
+              <label htmlFor="type">
+                Type:
+                <br />
+                <select
                   style={{
                     padding: "1em",
                     width: "60%",
                     backgroundColor: "#a9cbfa",
-                    textAlign: 'center',
+                    textAlign: "center",
                   }}
                   onChange={handleChange}
                   value={classes.type_id}
                   name="type_id"
-                  id="type"                
+                  id="type"
                 >
                   <option value={0}>- Select an option -</option>
                   <option value={1}>Aerobic</option>
@@ -98,7 +100,7 @@ const ClassForm = (props) => {
                   padding: "1em",
                   width: "60%",
                   backgroundColor: "#a9cbfa",
-                  textAlign: 'center',
+                  textAlign: "center",
                 }}
                 onChange={handleChange}
                 value={classes.start_time}
@@ -130,31 +132,32 @@ const ClassForm = (props) => {
               </select>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="duration">Duration:
-              <br />
-              
-              <Input
-                onChange={handleChange}
-                value={classes.class_duration}
-                name="class_duration"
-                id="duration"
-              />
+              <label htmlFor="duration">
+                Duration:
+                <br />
+                <Input
+                  onChange={handleChange}
+                  value={classes.class_duration}
+                  name="class_duration"
+                  id="duration"
+                />
               </label>
             </FormGroup>
             <FormGroup className="form-group">
-              <label htmlFor="level">Intensity Level:
-              <br />
+              <label htmlFor="level">
+                Intensity Level:
+                <br />
                 <select
                   style={{
                     padding: "1em",
                     width: "60%",
                     backgroundColor: "#a9cbfa",
-                    textAlign: 'center',
+                    textAlign: "center",
                   }}
                   onChange={handleChange}
                   value={classes.intensity_id}
                   name="intensity_id"
-                  id="level"                
+                  id="level"
                 >
                   <option value={0}>- Select an option -</option>
                   <option value={1}>Beginner</option>
@@ -193,7 +196,7 @@ const ClassForm = (props) => {
                 id="instructor"
               />
             </FormGroup>
-            
+
             {/* {
                 errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
             } */}

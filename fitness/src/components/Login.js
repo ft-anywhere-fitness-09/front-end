@@ -3,11 +3,11 @@ import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 const Login = () => {
-  const {push } = useHistory();
   const [login, setLogin] = useState({
     username: "",
     password: "",
   });
+  const { push } = useHistory();
 
   const handleChange = (e) => {
     setLogin({
@@ -23,7 +23,7 @@ const Login = () => {
       .then((resp) => {
         console.log(resp);
         localStorage.setItem("token", resp.data.token);
-        push("/classes")
+        push("/classes");
       })
       .catch((err) => {
         console.log({ err });

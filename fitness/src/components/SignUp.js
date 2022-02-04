@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Signup = () => {
@@ -44,7 +44,7 @@ const Signup = () => {
 
         .then((resp) => {
           console.log(resp);
-          push("/form");
+          push("/login");
         })
         .catch((err) => {
           console.log({ err });
@@ -100,8 +100,8 @@ const Signup = () => {
               {message}
             </p>
           )}
-          <h4>gi
-            Already a user?{" "}
+          <h4>
+            gi Already a user?{" "}
             {
               <a style={{ color: "black" }} href="/login">
                 Log in!
