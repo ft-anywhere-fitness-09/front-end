@@ -7,9 +7,15 @@ import "./search/search.css";
 
 const typeCategories = ["All", ...new Set(items.map((item) => item.type))];
 const timeCategories = ["All", ...new Set(items.map((item) => item.time))];
-const durationCategories = ["All", ...new Set(items.map((item) => item.duration))];
+const durationCategories = [
+  "All",
+  ...new Set(items.map((item) => item.duration)),
+];
 const levelCategories = ["All", ...new Set(items.map((item) => item.level))];
-const locationCategories = ["All", ...new Set(items.map((item) => item.location))];
+const locationCategories = [
+  "All",
+  ...new Set(items.map((item) => item.location)),
+];
 const attendCategories = ["All", ...new Set(items.map((item) => item.attend))];
 const sizeCategories = ["All", ...new Set(items.map((item) => item.size))];
 
@@ -34,12 +40,16 @@ function SearchClass() {
 
     const typefilteredData = items.filter((item) => item.type === button);
     const timefilteredData = items.filter((item) => item.time === button);
-    const durationfilteredData = items.filter((item) => item.duration === button);
+    const durationfilteredData = items.filter(
+      (item) => item.duration === button
+    );
     const levelfilteredData = items.filter((item) => item.level === button);
-    const locationfilteredData = items.filter((item) => item.location === button);
+    const locationfilteredData = items.filter(
+      (item) => item.location === button
+    );
     const attendfilteredData = items.filter((item) => item.attend === button);
     const sizefilteredData = items.filter((item) => item.size === button);
-    
+
     setMenuItem(typefilteredData);
     setMenuItem(timefilteredData);
     setMenuItem(durationfilteredData);
@@ -64,7 +74,6 @@ function SearchClass() {
       <Button button={sizebuttons} filter={filter} />
 
       <Menu menuItem={menuItem} />
-   
     </div>
   );
 }
