@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
 const Login = () => {
   const [login, setLogin] = useState({
     username: "",
     password: "",
   });
-  const { push } = useHistory();
 
   const handleChange = (e) => {
     setLogin({
@@ -22,8 +20,6 @@ const Login = () => {
       .post("/api/auth/login", login)
       .then((resp) => {
         console.log(resp);
-        localStorage.setItem("token", resp.data.token);
-        push("/classes");
       })
       .catch((err) => {
         console.log({ err });

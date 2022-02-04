@@ -15,9 +15,9 @@ import Class from "./components/Class";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  const [classes, setClasses] = useState([]);
+  // const [classes, setClasses] = useState([]);
 
-  const updateClasses = () => {};
+  // const updateClasses = () => {};
 
   return (
     <div className="App">
@@ -26,14 +26,14 @@ function App() {
         <Switch>
           <Route path="/classes/edit/:id">
             <EditClassForm
-              updateClasses={updateClasses}
-              setClasses={setClasses}
+              // updateClasses={updateClasses}
+              // setClasses={setClasses}
             />
           </Route>
           <Route path="/classes/:id">
-            <Class updateClasses={updateClasses} />
+            <Class />
           </Route>
-          <Route exact path="/classes" classes={classes}>
+          <Route exact path="/classes" >
             <SearchClass />
           </Route>
           <PrivateRoute

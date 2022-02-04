@@ -2,22 +2,27 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import axiosWithAuth from "../utils/axiosWithAuth";
+// import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Logout = () => {
   const { push } = useHistory();
 
   useEffect(() => {
-    axiosWithAuth()
-      .post("/logout")
-      .then((resp) => {
-        localStorage.removeItem("token");
-        push("/login");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    localStorage.removeItem("token");
+    push("/");
   }, []);
+
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .post("/logout")
+  //     .then((resp) => {
+  //       localStorage.removeItem("token");
+  //       push("/login");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   return (
     <div>

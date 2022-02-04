@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 
-// import axios from 'axios';
+import axios from 'axios';
 
 const Class = (props) => {
     const { updateClasses } = props;
 
     const [classes, setClasses] = useState('');
 
-    const { id } = useParams();
+    const { class_id } = useParams();
     const { push } = useHistory();
 
     useEffect(()=>{
-        // axios.get(``)
-        //     .then(resp=>{
-        //         setClasses(resp.data);
-        //     })
-        //     .catch(error=>{
-        //         console.log(error);
-        //     })
-    }, [id]);
+        axios.get(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`)
+            .then(resp=>{
+                console.log(resp)
+                // setClasses(resp.data);
+            })
+            .catch(error=>{
+                console.log({error});
+            })
+    }, [class_id]);
 
     const handleDelete = () => {
         // axios.delete(``)
@@ -70,7 +71,7 @@ const Class = (props) => {
                         
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
-                            <Link to={`/classes/edit/${classes.id}`} className="m-2 btn btn-success">Edit</Link>
+                            <Link to={`/classes/edit/${classes.class_id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"><input onClick={handleDelete} type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>
                     </div>

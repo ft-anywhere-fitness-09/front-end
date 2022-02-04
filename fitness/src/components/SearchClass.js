@@ -1,41 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Menu from "./search/Menu";
-import Button from "./search/Button";
-import items from "./search/searchData";
-import SearchBar from "./search/SearchBar";
 import "./search/search.css";
+import ClassListItem from './ClassListItem'
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-const allCategories = ["All", ...new Set(items.map((item) => item.type))];
 
-// console.log(allCategories);
+const SearchClass = ()=> {
 
-function SearchClass() {
-  const [menuItem, setMenuItem] = useState(items);
-  const [buttons, setButtons] = useState(allCategories);
+  const [ classes, setClasses ] = useState([]);
+  const { class_id } = useParams();
 
-  //Filter Function
-  const filter = (button) => {
-    if (button === "All") {
-      setMenuItem(items);
-      return;
-    }
-
-    const filteredData = items.filter((item) => item.type === button);
-    setMenuItem(filteredData);
-  };
+  useEffect(() => {
+    axios.get("https://ft-anywhere-fitness-09.herokuapp.com/api/classes")  
+      .then(resp =>{
+        setClasses(resp.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+},[]);
 
   return (
-    <div className="Search">
-      <div className="title">
-        <h2>Class Search</h2>
+      <div className="col">
+          <table className="table table-striped table-hover">
+              <thead>
+              <tr>
+                  <th>Class Name</th>
+                  <th>Class Type</th>
+                  <th>Class Date</th>
+                  <th>Start Time</th>
+                  <th>Duration</th>
+                  <th>Intensity Level</th>
+                  <th>Location</th>
+                  <th>Max Cass Size</th>
+                  <th>Instructors</th>
+              </tr>
+              </thead>
+
+              <tbody>
+                  {
+                      classes.map(classes=><ClassListItem key={classes.class_id} class={classes}/>)
+                  }
+              </tbody>
+          </table>
+        
       </div>
-
-      {/* <SearchBar/> */}
-
-      <Button button={buttons} filter={filter} />
-      <Menu menuItem={menuItem} />
-    </div>
   );
 }
 

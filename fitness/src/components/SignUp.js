@@ -10,7 +10,6 @@ const Signup = () => {
     username: "",
     password: "",
     role_type: "",
-    auth_code:""
   });
 
   const [message, setMessage] = useState("");
@@ -27,33 +26,33 @@ const Signup = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if( state.role_type === "client"){
-    axiosWithAuth()
-      .post(
-        "/api/auth/register",
-        state
-      )
-      .then((resp) => {
-        console.log(resp);
-      })
-      .catch((err) => {
-        console.log({ err }) }) ;
-      } else if ( state.role_type === "instructor"){
-        axiosWithAuth()
-        .post(
-        "/api/auth/register", state
-        // {username: state.username, password: state.password, role_type: state.role_type, auth_code: "auth_instructor_123"}
-      )
-      .then((resp) => {
-        console.log(resp);
-      })
-      .catch((err) => {
-        console.log({ err })});
-      } else {
-        return alert('error')
-      }
-      
-    
+    console.log(state);
+    if (state.role_type === "client") {
+      axiosWithAuth()
+        .post("/api/auth/register", state)
+        .then((resp) => {
+          console.log(resp);
+          push("/login");
+        })
+        .catch((err) => {
+          console.log({ err });
+          setMessage(err.response.data.message);
+        });
+    } else if (state.role_type === "instructor") {
+      axiosWithAuth()
+        .post("/api/auth/register", state)
+
+        .then((resp) => {
+          console.log(resp);
+          push("/form");
+        })
+        .catch((err) => {
+          console.log({ err });
+          setMessage(err.response.data.message);
+        });
+    } else {
+      return alert("error");
+    }
   };
   return (
     <ComponentContainer>
@@ -71,19 +70,11 @@ const Signup = () => {
               <option name="role_type" value={"client"}>
                 Client
               </option>
-              <option name="role_type" value={"instructor"}  >
+              <option name="role_type" value={"instructor"}>
                 Instructor
               </option>
             </select>
           </div>
-          {/* <Input
-            name="email"
-            placeholder="Enter email"
-            type="email"
-            onChange={changeHandler}
-          /> */}
-          {/* <br /> */}
-          {/* <br /> */}
 
           <br />
           <br />
@@ -103,12 +94,6 @@ const Signup = () => {
           />
           <br />
           <br />
-          <Input
-            name="auth_code"
-            placeholder="Enter code"
-            type="text"
-            onChange={changeHandler}
-          />
           <Button type="submit">Sign Up</Button>
           {message && (
             <p style={{ color: "black" }} id="error">
