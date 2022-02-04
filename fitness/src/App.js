@@ -39,8 +39,8 @@ function App() {
           <PrivateRoute
             exact
             path="/form"
-            // updateClasses={updateClasses}
-            // setClasses={setClasses}
+            updateClasses={updateClasses}
+            setClasses={setClasses}
             component={ClassForm}
           />
 

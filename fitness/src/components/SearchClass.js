@@ -28,7 +28,7 @@ function SearchClass() {
   return (
     <div className="Search">
       <div className="title">
-        <h2>Class Search</h2>
+        <h2>Available Classes</h2>
       </div>
 
       {/* <SearchBar/> */}

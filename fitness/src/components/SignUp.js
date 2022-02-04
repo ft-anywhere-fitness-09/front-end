@@ -47,6 +47,7 @@ const Signup = () => {
         })
         .then((resp) => {
           console.log(resp);
+          push("/form");
         })
         .catch((err) => {
           console.log({ err });
