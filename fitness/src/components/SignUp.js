@@ -10,7 +10,7 @@ const Signup = () => {
     username: "",
     password: "",
     role_type: "",
-    auth_code: "",
+    auth_code:""
   });
 
   const [message, setMessage] = useState("");
@@ -18,7 +18,7 @@ const Signup = () => {
   const { push } = useHistory();
 
   const changeHandler = (e) => {
-    // console.log(e.target.value);
+    console.log(e.target.value);
     setState({
       ...state,
       [e.target.name]: e.target.value,
@@ -27,34 +27,34 @@ const Signup = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(state);
-    if (state.role_type === "client") {
-      axiosWithAuth()
-        .post("/api/auth/register", state)
-        .then((resp) => {
-          console.log(resp);
-          push("/login");
-        })
-        .catch((err) => {
-          console.log({ err });
-          setMessage(err.response.data.message);
-        });
-    } else if (state.role_type === "instructor") {
-      axiosWithAuth()
-        .post("/api/auth/register", {
-          ...state,
-          auth_code: "auth_instructor_123",
-        })
-        .then((resp) => {
-          console.log(resp);
-        })
-        .catch((err) => {
-          console.log({ err });
-          setMessage(err.response.data.message);
-        });
-    } else {
-      return alert("error");
-    }
+    console.log(state)
+    if( state.role_type === "client"){
+    axiosWithAuth()
+      .post(
+        "/api/auth/register",
+        state
+      )
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log({ err }) }) ;
+      } else if ( state.role_type === "instructor"){
+        axiosWithAuth()
+        .post(
+        "/api/auth/register", state
+        // {username: state.username, password: state.password, role_type: state.role_type, auth_code: "auth_instructor_123"}
+      )
+      .then((resp) => {
+        console.log(resp);
+      })
+      .catch((err) => {
+        console.log({ err })});
+      } else {
+        return alert('error')
+      }
+      
+    
   };
   return (
     <ComponentContainer>
@@ -72,7 +72,7 @@ const Signup = () => {
               <option name="role_type" value={"client"}>
                 Client
               </option>
-              <option name="role_type" value={"instructor"}>
+              <option name="role_type" value={"instructor"}  >
                 Instructor
               </option>
             </select>
@@ -104,19 +104,14 @@ const Signup = () => {
           />
           <br />
           <br />
-          {/* <Input
-            name="auth_type"
+          <Input
+            name="auth_code"
             placeholder="Enter code"
             type="text"
             onChange={changeHandler}
-          /> */}
+          />
           <Button type="submit">Sign Up</Button>
-          {message && (
-            <p style={{ color: "black" }} id="error">
-              {message}
-            </p>
-          )}
-          <h4>
+          <h4>gi
             Already a user?{" "}
             {
               <a style={{ color: "black" }} href="/login">
