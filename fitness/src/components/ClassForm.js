@@ -30,7 +30,6 @@ const ClassForm = (props) => {
     axios
       .post(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes`, classes)
       .then((resp) => {
-        console.log(resp);
         setClasses(resp.data);
         push(`/classes`);
       })
@@ -195,10 +194,6 @@ const ClassForm = (props) => {
                 id="instructor"
               />
             </FormGroup>
-
-            {/* {
-                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
-            } */}
             <Button>Create Class</Button>
           </ModalContainer>
         </FormDiv>

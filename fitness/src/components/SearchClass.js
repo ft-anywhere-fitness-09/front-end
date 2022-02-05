@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import "./search/search.css";
 import ClassListItem from "./ClassListItem";
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import axiosWithAuth from "../utils/axiosWithAuth";
+
 
 const SearchClass = () => {
   const [classes, setClasses] = useState([]);
-  const { class_id } = useParams();
+
 
   useEffect(() => {
     axios
@@ -48,18 +46,6 @@ const SearchClass = () => {
   );
 };
 
-const FormGroup = styled.form`
-  padding: 1rem;
-`;
 
-const Input = styled.input`
-  border: none;
-  border-bottom: solid black 3px;
-  border-radius: 5px;
-  font-size: 1rem;
-  padding: 1rem 0;
-  width: 100%;
-  background-color: #a9cbfa;
-`;
 
 export default SearchClass;

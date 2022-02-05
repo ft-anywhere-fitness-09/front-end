@@ -13,7 +13,6 @@ const Class = (props) => {
     useEffect(()=>{
         axios.get(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`)
             .then(resp=>{
-                console.log(resp)
                 setClasses(resp.data);
             })
             .catch(error=>{
@@ -61,7 +60,7 @@ const Class = (props) => {
                                 <label>Location: <strong>{classes.class_location}</strong></label>
                             </div>
                             <div>
-                                <label>Number of Attendees: <strong>{classes.class_instructor}</strong></label>
+                                <label>Class Instructors: <strong>{classes.class_instructor}</strong></label>
                             </div>
                             <div>
                                 <label>Max Class Size: <strong>{classes.max_class_size}</strong></label>
@@ -69,7 +68,6 @@ const Class = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
                             <Link classes={classes} to={`/classes/edit/${classes.class_id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"><input onClick={handleDelete} type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>

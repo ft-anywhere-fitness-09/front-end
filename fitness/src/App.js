@@ -17,7 +17,6 @@ import PrivateRoute from "./components/PrivateRoute";
 function App() {
   const [classes, setClasses] = useState([]);
 
-  // const updateClasses = () => {};
 
   return (
     <div className="App">
@@ -25,10 +24,7 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/classes/edit/:class_id">
-            <EditClassForm
-              // updateClasses={updateClasses}
-              setClasses={setClasses}
-            />
+            <EditClassForm setClasses={setClasses}/>
           </Route>
           <Route path="/classes/:class_id">
             <Class setClasses={setClasses}/>
@@ -36,13 +32,10 @@ function App() {
           <Route exact path="/classes">
             <SearchClass setClasses={setClasses} />
           </Route>
-          <PrivateRoute
-            path="/form"
-            // updateClasses={updateClasses}
-            setClasses={setClasses}
+          <PrivateRoute path="/form" 
+            setClasses={setClasses} 
             component={ClassForm}
           />
-
           <Route exact path="/signup">
             <Signup />
           </Route>

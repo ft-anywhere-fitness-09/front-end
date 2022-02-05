@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -8,7 +7,6 @@ const EditClassForm = (props) => {
 	const { push } = useHistory();
     const { class_id } = useParams();
  
-	const { updateClasses } = props;
 	const [ classes, setClasses] = useState({
     class_name: "",
     type_id: 0,
@@ -20,19 +18,7 @@ const EditClassForm = (props) => {
     class_instructor: 0,
     max_class_size: 0,
 	});
-  // const {
-  //   class_id,
-  //   type_id,
-  //   class_name,
-  //   class_date,
-  //   start_time,
-  //   class_duration,
-  //   intensity_id,
-  //   class_location,
-  //   max_class_size,
-  //   class_instructor,
-  // } = props.classes;
-
+ 
    
     useEffect(()=>{
         axios.get(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`)
@@ -52,8 +38,6 @@ const EditClassForm = (props) => {
         e.preventDefault();
         axios.put(`https://ft-anywhere-fitness-09.herokuapp.com/api/classes/${class_id}`, classes)
             .then(resp=>{
-              console.log(resp)
-                // setClasses(resp.data);
               push(`/classes/${class_id}`);
 			})
 			.catch(error=>{
@@ -218,10 +202,6 @@ const EditClassForm = (props) => {
                 id="instructor"
               />
             </FormGroup>
-
-            {/* {
-                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
-            } */}
             <Button>Update Class</Button>
           </ModalContainer>
         </FormDiv>

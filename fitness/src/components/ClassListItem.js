@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ClassListItem = (props) => {
-  console.log(props);
   const {
     class_id,
     type_id,

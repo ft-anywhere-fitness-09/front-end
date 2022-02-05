@@ -33,7 +33,6 @@ const Login = () => {
   return (
     <ComponentContainer>
       <ModalContainer>
-        {/* <h1>Welcome to Anywhere Fitness 💪</h1> */}
         <h2>Log In </h2>
 
         <FormGroup onSubmit={handleSubmit} className="log-in">
