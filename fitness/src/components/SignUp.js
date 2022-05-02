@@ -101,7 +101,7 @@ const Signup = () => {
             </p>
           )}
           <h4>
-            gi Already a user?{" "}
+            Already a user?{" "}
             {
               <a style={{ color: "black" }} href="/login">
                 Log in!
