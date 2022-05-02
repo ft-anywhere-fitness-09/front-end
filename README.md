@@ -13,4 +13,4 @@ Contributors of the project :
 -Danny Chui,
 -Gumsan Marip
 
-Link to the deployed project: ✨_https://front-end-e3xtwfo8g-ft-anywhere-fitness-09.vercel.app/_ ❤️✨
+Link to the deployed project: ✨_front-end-git-main-ft-anywhere-fitness-09.vercel.app_ ❤️✨
