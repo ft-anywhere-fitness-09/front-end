@@ -17,23 +17,23 @@ import PrivateRoute from "./components/PrivateRoute";
 function App() {
   const [classes, setClasses] = useState([]);
 
-
   return (
     <div className="App">
       <Header />
       <Layout>
         <Switch>
           <Route path="/classes/edit/:class_id">
-            <EditClassForm setClasses={setClasses}/>
+            <EditClassForm setClasses={setClasses} />
           </Route>
           <Route path="/classes/:class_id">
-            <Class setClasses={setClasses}/>
+            <Class setClasses={setClasses} />
           </Route>
           <Route exact path="/classes">
             <SearchClass setClasses={setClasses} />
           </Route>
-          <PrivateRoute path="/form" 
-            setClasses={setClasses} 
+          <PrivateRoute
+            path="/form"
+            setClasses={setClasses}
             component={ClassForm}
           />
           <Route exact path="/signup">

@@ -50,8 +50,6 @@ const Signup = () => {
           console.log({ err });
           setMessage(err.response.data.message);
         });
-    } else {
-      return alert("error");
     }
   };
   return (

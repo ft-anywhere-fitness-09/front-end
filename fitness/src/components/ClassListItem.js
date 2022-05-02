@@ -16,8 +16,11 @@ const ClassListItem = (props) => {
   } = props.class;
 
   return (
-    <tr key={class_id}>
-      <td>{class_name}</td>
+    <tr
+      style={{ color: " #16427F ", border: " 1px solid black" }}
+      key={class_id}
+    >
+      <td style={{ color: " #16427F" }}>{class_name}</td>
       <td>{type_id}</td>
       <td>{class_date}</td>
       <td>{start_time}</td>

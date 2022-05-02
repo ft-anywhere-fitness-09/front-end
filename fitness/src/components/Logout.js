@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-
 const Logout = () => {
   const { push } = useHistory();
 
   useEffect(() => {
     localStorage.removeItem("token");
-    push("/");
+    push("/logout");
   }, []);
 
   return (

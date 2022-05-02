@@ -6,7 +6,12 @@ const HomePage = () => {
       <h1 style={{ display: "flex", justifyContent: "center" }}>
         Welcome to Anywhere Fitness 💪
       </h1>
-      <h3 style={{ display: "flex", justifyContent: "center" }}>
+      <h3
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         “The body achieves what the mind believes.”
       </h3>
       <img
