@@ -13,4 +13,3 @@ Contributors of the project :
 -Danny Chui,
 -Gumsan Marip
 
-Link to the deployed project: ✨❤️✨
